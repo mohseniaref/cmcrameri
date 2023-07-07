@@ -75,17 +75,17 @@ def _load_cmaps():
     from matplotlib.colors import ListedColormap
 
     # Prepended to cmap names when registering
-    cmap_reg_prefix = "cmc."
+    #cmap_reg_prefix = "cmc."
 
     cmaps = {}
 
     def register(cmap):
         # Register in Matplotlib
         if version.parse(matplotlib.__version__) < version.parse("3.5"):
-            plt.cm.register_cmap(name=f"{cmap_reg_prefix}{cmap.name}", cmap=cmap)
+            plt.cm.register_cmap(name=f"{cmap.name}", cmap=cmap)
         else:
             matplotlib.colormaps.register(
-                cmap=cmap, name=f"{cmap_reg_prefix}{cmap.name}"
+                cmap=cmap, name=f"{cmap.name}"
             )
 
         # Add to dict
